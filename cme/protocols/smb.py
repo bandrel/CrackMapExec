@@ -63,13 +63,13 @@ def requires_smb_server(func):
         except IndexError:
             pass
 
-        if kwargs.has_key('payload'):
+        if 'payload' in kwargs:
             payload = kwargs['payload']
 
-        if kwargs.has_key('get_output'):
+        if 'get_output' in kwargs:
             get_output = kwargs['get_output']
 
-        if kwargs.has_key('methods'):
+        if 'methods' in kwargs:
             methods = kwargs['methods']
 
         if not payload and self.args.execute:
