@@ -86,6 +86,10 @@ class DatabaseNavigator(cmd.Cmd):
         else:
             print '[-] invalid argument, specify creds or hosts'
 
+    def help_export(self):
+        print "Export credentials or hosts"
+        print "export export creds <plaintext|hashes|both|csv> <filename>"
+        print "export hosts <filename>"
 
     def do_import(self, line):
         if not line:
@@ -161,6 +165,11 @@ class DatabaseNavigator(cmd.Cmd):
 
             print "[+] Metasploit credential import successful"
 
+    def help_import(self):
+        print "Import credentials from Emipre or Metasploit Framework"
+        print "Requires ~/.cme/cme.conf to be updated with valid empire/metasploit information"
+        print "import <empire|metasploit>"
+
     def complete_import(self, text, line, begidx, endidx):
         "Tab-complete 'import' commands."
 
@@ -234,6 +243,10 @@ class CMEDBMenu(cmd.Cmd):
             except UserExitedProto:
                 pass
 
+    def help_proto(self):
+        print "Selects specific protocol within workspace"
+        print "proto <winrm|http|mssql|ssh|smb>"
+
     def do_workspace(self, line):
         if not line:
             return
@@ -277,6 +290,10 @@ class CMEDBMenu(cmd.Cmd):
 
             self.workspace = line
             self.prompt = 'cmedb ({}) > '.format(line)
+
+    def help_workspace(self):
+        print "Creates new workspace"
+        print "workspace create <workspace>"
 
     def do_exit(self, line):
         sys.exit(0)
