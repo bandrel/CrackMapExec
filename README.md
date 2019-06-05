@@ -1,6 +1,4 @@
 ![Supported Python versions](https://img.shields.io/badge/python-2.7-blue.svg)
-![Arsenal_2016](https://cdn.rawgit.com/toolswatch/badges/master/arsenal/2016.svg)
-![Arsenal_2017](https://cdn.rawgit.com/toolswatch/badges/master/arsenal/2017.svg)
 
 # CrackMapExec
 
@@ -20,9 +18,11 @@ Unintentional contributors:
 
 - The [Empire](https://github.com/PowerShellEmpire/Empire) project
 - @T-S-A's [smbspider](https://github.com/T-S-A/smbspider) script
+- @ConsciousHacker's partial Python port of Invoke-obfuscation from the [GreatSCT](https://github.com/GreatSCT/GreatSCT) project
 
 This repository contains the following repositories as submodules:
 - [Impacket](https://github.com/CoreSecurity/impacket)
+- [Pywinrm](https://github.com/diyan/pywinrm)
 - [Pywerview](https://github.com/the-useless-one/pywerview)
 - [PowerSploit](https://github.com/PowerShellMafia/PowerSploit)
 - [Invoke-Obfuscation](https://github.com/danielbohannon/Invoke-Obfuscation)
@@ -30,12 +30,22 @@ This repository contains the following repositories as submodules:
 - [Mimikittenz](https://github.com/putterpanda/mimikittenz)
 - [NetRipper](https://github.com/NytroRST/NetRipper)
 - [RandomPS-Scripts](https://github.com/xorrior/RandomPS-Scripts)
+- [SessionGopher](https://github.com/fireeye/SessionGopher)
+- [Mimipenguin](https://github.com/huntergregal/mimipenguin)
 
 # Documentation, Tutorials, Examples
 See the project's [wiki](https://github.com/byt3bl33d3r/CrackMapExec/wiki) for documentation and usage examples
 
 # Installation
 Please see the installation wiki page [here](https://github.com/byt3bl33d3r/CrackMapExec/wiki/Installation).
+
+# How to fund my tea & sushi reserve
+
+BTC: `1ER8rRE6NTZ7RHN88zc6JY87LvtyuRUJGU`
+
+ETH: `0x91d9aDCf8B91f55BCBF0841616A01BeE551E90ee`
+
+LTC: `LLMa2bsvXbgBGnnBwiXYazsj7Uz6zRe4fr`
 
 # To do
 - Kerberos support
